@@ -1,0 +1,5 @@
+anomaly_id,record_id,scenario,expected,severity
+AN001,CHG-000001,Unapproved quantity change updates inventory,ANOMALY,HIGH
+AN002,ACKL-000005,Acknowledgement references wrong PO line,ANOMALY,HIGH
+AN003,PROM-000003,Promised date before order date,ANOMALY,MEDIUM
+AN004,PO-2026-000001,Older acknowledgement revision remains current,ANOMALY,HIGH

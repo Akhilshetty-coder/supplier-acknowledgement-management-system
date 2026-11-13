@@ -1,0 +1,59 @@
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# IDE settings
+.idea/
+*.swp
+*.swo
+
+# SQLite databases and backups
+database/*.db
+database/*.sqlite
+database/*.sqlite3
+database/*backup*
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+# VS Code settings
+.vscode/
+
+# Local backup files
+dashboard/app_backup*.py
+
+
+test/test_business_logic_backup.py
+
+# Private working notes
+PROJECT_CONTINUATION.md
+
+# Database files anywhere in the project
+*.db
+*.sqlite
+*.sqlite3

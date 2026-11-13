@@ -1,0 +1,40 @@
+check,actual,expected,status
+suppliers record count,500,500,PASS
+purchase_orders record count,10000,10000,PASS
+po_lines record count,20000,20000,PASS
+acknowledgements record count,10000,10000,PASS
+acknowledgement_lines record count,20000,20000,PASS
+promise_dates record count,20000,20000,PASS
+change_requests record count,5000,5000,PASS
+inventory_plans record count,20000,20000,PASS
+ground_truth record count,4,4,PASS
+suppliers duplicate IDs,0,0,PASS
+purchase_orders duplicate IDs,0,0,PASS
+po_lines duplicate IDs,0,0,PASS
+acknowledgements duplicate IDs,0,0,PASS
+acknowledgement_lines duplicate IDs,0,0,PASS
+promise_dates duplicate IDs,0,0,PASS
+change_requests duplicate IDs,0,0,PASS
+inventory_plans duplicate IDs,0,0,PASS
+ground_truth duplicate IDs,0,0,PASS
+PO supplier references,0,0,PASS
+PO line references,0,0,PASS
+Acknowledgement PO references,0,0,PASS
+Acknowledgement line references,0,0,PASS
+Acknowledgement line PO references,0,0,PASS
+Acknowledgement line PO-line references,0,0,PASS
+Promise date references,0,0,PASS
+Change request PO references,0,0,PASS
+Change request PO-line references,0,0,PASS
+Change request acknowledgement references,0,0,PASS
+Inventory PO-line references,0,0,PASS
+Inventory change references,0,0,PASS
+Acknowledgement versus acknowledgement-line PO,0,0,PASS
+Intentional wrong PO-line reference,['ACKL-000005'],['ACKL-000005'],PASS
+Allowed status values,0,0,PASS
+Negative or zero quantity errors,0,0,PASS
+Negative or zero price errors,0,0,PASS
+Intentional promised-date anomaly,['PROM-000003'],['PROM-000003'],PASS
+Intentional revision anomaly,['PO-2026-000001'],['PO-2026-000001'],PASS
+Intentional pending approval inventory anomaly,['CHG-000001'],['CHG-000001'],PASS
+Ground truth anomaly labels,"{'AN001': 'CHG-000001', 'AN002': 'ACKL-000005', 'AN003': 'PROM-000003', 'AN004': 'PO-2026-000001'}","{'AN001': 'CHG-000001', 'AN002': 'ACKL-000005', 'AN003': 'PROM-000003', 'AN004': 'PO-2026-000001'}",PASS

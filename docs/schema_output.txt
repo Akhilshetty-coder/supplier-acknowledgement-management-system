@@ -1,0 +1,213 @@
+========== DATABASE SCHEMA ==========
+Database: supplier_management.db
+Total Tables: 14
+
+TABLE NAME: Acknowledgement
+------------------------------------------------------------
+
+COLUMNS:
+Name: ack_id | Type: TEXT | Not Null: 0 | Primary Key: 1
+Name: po_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: revision_no | Type: INTEGER | Not Null: 1 | Primary Key: 0
+Name: received_at | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: status | Type: TEXT | Not Null: 1 | Primary Key: 0
+
+FOREIGN KEYS:
+Column: po_id | References: PurchaseOrder | Referenced Column: po_id
+
+TABLE NAME: AcknowledgementLine
+------------------------------------------------------------
+
+COLUMNS:
+Name: ack_line_id | Type: TEXT | Not Null: 0 | Primary Key: 1
+Name: ack_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: po_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: po_line_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: accepted_quantity | Type: REAL | Not Null: 1 | Primary Key: 0
+Name: rejected_quantity | Type: REAL | Not Null: 1 | Primary Key: 0
+Name: proposed_unit_price | Type: REAL | Not Null: 0 | Primary Key: 0
+
+FOREIGN KEYS:
+Column: po_id | References: POLine | Referenced Column: po_id
+Column: po_line_id | References: POLine | Referenced Column: po_line_id
+Column: ack_id | References: Acknowledgement | Referenced Column: ack_id
+Column: po_id | References: Acknowledgement | Referenced Column: po_id
+
+TABLE NAME: Approval
+------------------------------------------------------------
+
+COLUMNS:
+Name: approval_id | Type: TEXT | Not Null: 0 | Primary Key: 1
+Name: change_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: approval_level | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: decision | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: approver_role | Type: TEXT | Not Null: 0 | Primary Key: 0
+Name: decided_at | Type: TEXT | Not Null: 0 | Primary Key: 0
+Name: comments | Type: TEXT | Not Null: 0 | Primary Key: 0
+
+FOREIGN KEYS:
+Column: change_id | References: ChangeRequest | Referenced Column: change_id
+
+TABLE NAME: AuditLog
+------------------------------------------------------------
+
+COLUMNS:
+Name: audit_id | Type: INTEGER | Not Null: 0 | Primary Key: 1
+Name: user | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: action | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: description | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: timestamp | Type: TEXT | Not Null: 1 | Primary Key: 0
+
+FOREIGN KEYS:
+No foreign keys
+
+TABLE NAME: ChangeRequest
+------------------------------------------------------------
+
+COLUMNS:
+Name: change_id | Type: TEXT | Not Null: 0 | Primary Key: 1
+Name: po_line_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: ack_line_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: change_type | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: old_value | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: new_value | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: approval_status | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: created_at | Type: TEXT | Not Null: 1 | Primary Key: 0
+
+FOREIGN KEYS:
+Column: ack_line_id | References: AcknowledgementLine | Referenced Column: ack_line_id
+Column: po_line_id | References: POLine | Referenced Column: po_line_id
+
+TABLE NAME: DataQualityException
+------------------------------------------------------------
+
+COLUMNS:
+Name: exception_id | Type: INTEGER | Not Null: 0 | Primary Key: 1
+Name: batch_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: source_table | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: source_record_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: reason | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: source_json | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: created_at | Type: TEXT | Not Null: 1 | Primary Key: 0
+
+FOREIGN KEYS:
+No foreign keys
+
+TABLE NAME: InventoryPlan
+------------------------------------------------------------
+
+COLUMNS:
+Name: inventory_plan_id | Type: TEXT | Not Null: 0 | Primary Key: 1
+Name: po_line_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: source_change_id | Type: TEXT | Not Null: 0 | Primary Key: 0
+Name: projected_quantity | Type: REAL | Not Null: 1 | Primary Key: 0
+Name: effective_from | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: effective_to | Type: TEXT | Not Null: 0 | Primary Key: 0
+Name: version_no | Type: INTEGER | Not Null: 1 | Primary Key: 0
+Name: status | Type: TEXT | Not Null: 1 | Primary Key: 0
+
+FOREIGN KEYS:
+Column: source_change_id | References: ChangeRequest | Referenced Column: change_id
+Column: po_line_id | References: POLine | Referenced Column: po_line_id
+
+TABLE NAME: Notification
+------------------------------------------------------------
+
+COLUMNS:
+Name: notification_id | Type: TEXT | Not Null: 0 | Primary Key: 1
+Name: po_id | Type: TEXT | Not Null: 0 | Primary Key: 0
+Name: change_id | Type: TEXT | Not Null: 0 | Primary Key: 0
+Name: production_order_id | Type: TEXT | Not Null: 0 | Primary Key: 0
+Name: recipient_role | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: message | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: notification_status | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: created_at | Type: TEXT | Not Null: 1 | Primary Key: 0
+
+FOREIGN KEYS:
+Column: production_order_id | References: ProductionOrder | Referenced Column: production_order_id
+Column: change_id | References: ChangeRequest | Referenced Column: change_id
+Column: po_id | References: PurchaseOrder | Referenced Column: po_id
+
+TABLE NAME: POLine
+------------------------------------------------------------
+
+COLUMNS:
+Name: po_line_id | Type: TEXT | Not Null: 0 | Primary Key: 1
+Name: po_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: product_name | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: requested_quantity | Type: REAL | Not Null: 1 | Primary Key: 0
+Name: unit_price | Type: REAL | Not Null: 1 | Primary Key: 0
+Name: requested_date | Type: TEXT | Not Null: 1 | Primary Key: 0
+
+FOREIGN KEYS:
+Column: po_id | References: PurchaseOrder | Referenced Column: po_id
+
+TABLE NAME: ProductionOrder
+------------------------------------------------------------
+
+COLUMNS:
+Name: production_order_id | Type: TEXT | Not Null: 0 | Primary Key: 1
+Name: product_name | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: required_quantity | Type: REAL | Not Null: 1 | Primary Key: 0
+Name: required_date | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: status | Type: TEXT | Not Null: 1 | Primary Key: 0
+
+FOREIGN KEYS:
+No foreign keys
+
+TABLE NAME: ProductionOrderSupplyAllocation
+------------------------------------------------------------
+
+COLUMNS:
+Name: allocation_id | Type: TEXT | Not Null: 0 | Primary Key: 1
+Name: production_order_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: po_line_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: allocated_quantity | Type: REAL | Not Null: 1 | Primary Key: 0
+Name: created_at | Type: TEXT | Not Null: 1 | Primary Key: 0
+
+FOREIGN KEYS:
+Column: po_line_id | References: POLine | Referenced Column: po_line_id
+Column: production_order_id | References: ProductionOrder | Referenced Column: production_order_id
+
+TABLE NAME: PromiseDate
+------------------------------------------------------------
+
+COLUMNS:
+Name: promise_id | Type: TEXT | Not Null: 0 | Primary Key: 1
+Name: ack_line_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: promised_date | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: effective_from | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: effective_to | Type: TEXT | Not Null: 0 | Primary Key: 0
+Name: is_current | Type: INTEGER | Not Null: 1 | Primary Key: 0
+
+FOREIGN KEYS:
+Column: ack_line_id | References: AcknowledgementLine | Referenced Column: ack_line_id
+
+TABLE NAME: PurchaseOrder
+------------------------------------------------------------
+
+COLUMNS:
+Name: po_id | Type: TEXT | Not Null: 0 | Primary Key: 1
+Name: supplier_id | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: order_date | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: currency | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: status | Type: TEXT | Not Null: 1 | Primary Key: 0
+
+FOREIGN KEYS:
+Column: supplier_id | References: Supplier | Referenced Column: supplier_id
+
+TABLE NAME: Supplier
+------------------------------------------------------------
+
+COLUMNS:
+Name: supplier_id | Type: TEXT | Not Null: 0 | Primary Key: 1
+Name: supplier_name | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: email | Type: TEXT | Not Null: 0 | Primary Key: 0
+Name: phone | Type: TEXT | Not Null: 0 | Primary Key: 0
+Name: status | Type: TEXT | Not Null: 1 | Primary Key: 0
+Name: created_at | Type: TEXT | Not Null: 1 | Primary Key: 0
+
+FOREIGN KEYS:
+No foreign keys
+
+========== SCHEMA EXTRACTION COMPLETED ==========

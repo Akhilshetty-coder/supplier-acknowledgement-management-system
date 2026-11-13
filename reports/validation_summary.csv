@@ -1,0 +1,11 @@
+check_id,check,result,issue_count
+DV01,Duplicate primary-key IDs,PASS,0
+DV02,Foreign-key relationships,PASS,0
+DV03,Allowed status values,PASS,0
+DV04,Delivery-date consistency,PASS,0
+DV05,Accepted and rejected quantities,PASS,0
+DV06,Quantity and price ranges,PASS,0
+DV07,Acknowledgement revision consistency,PASS,0
+DV08,Approval and inventory consistency,PASS,0
+DV09,Duplicate audit events and notifications,PASS,0
+DV10,Ground-truth ID separation,PASS,0

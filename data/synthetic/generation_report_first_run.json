@@ -1,0 +1,30 @@
+{
+    "project": "Supplier Acknowledgement Management System",
+    "random_seed": 20261022,
+    "generation_date": "2026-11-13",
+    "generation_method": "Deterministic synthetic CSV generation",
+    "record_counts": {
+        "suppliers.csv": 500,
+        "purchase_orders.csv": 10000,
+        "po_lines.csv": 20000,
+        "acknowledgements.csv": 10000,
+        "acknowledgement_lines.csv": 20000,
+        "promise_dates.csv": 20000,
+        "change_requests.csv": 5000,
+        "inventory_plans.csv": 20000,
+        "ground_truth.csv": 4
+    },
+    "total_acknowledgement_and_change_events": 15000,
+    "injected_anomalies": 4,
+    "sha256_checksums": {
+        "suppliers.csv": "5e9a27b11b253f93b75ec6520f65567e150c3e4f10346b7b8aad235952e0f46b",
+        "purchase_orders.csv": "1c4eddf1f415750e91b770ea03102f0156cbc47613c1f2064c18fc8e4c0ff3d7",
+        "po_lines.csv": "248239d9402f4a106513728415dad4d3904229bab358190f75a9ae9c1440ef5d",
+        "acknowledgements.csv": "aec75b56d76d7f99852213f81420cb15721fec25401ab075f1b401643109d278",
+        "acknowledgement_lines.csv": "6badc830cdb557dd9bf771fffdc0eac254a1950f8fbbfde785ea8367f342d720",
+        "promise_dates.csv": "4f066fe63848062364b458fe1a5578efc12e26b0f956bad00d6f9a9ed40ceef6",
+        "change_requests.csv": "66ff51c3f2155e5fe972a8fa5fb4d88d5835e174bdd2c09a43e563e203fa6597",
+        "inventory_plans.csv": "9c087ad5bc24a3e7ea488fad5e04f4c34e103047a0971b1cf91fd1bcd893e701",
+        "ground_truth.csv": "b1c13f9b4e2af8182757f8aa99facc8989945d718655e44f3e08d2496d5fc468"
+    }
+}

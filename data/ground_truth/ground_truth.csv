@@ -1,0 +1,8 @@
+
+anomaly_id,scenario,expected_result,severity
+AN001,Unapproved quantity change,ANOMALY,HIGH
+AN002,Invalid purchase order line,ANOMALY,HIGH
+AN003,Promised date before order date,ANOMALY,MEDIUM
+AN004,Older acknowledgement revision,ANOMALY,HIGH
+AN005,Valid supplier acknowledgement,NORMAL,LOW
+AN006,Valid approved quantity change,NORMAL,LOW

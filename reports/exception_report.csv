@@ -1,0 +1,7 @@
+anomaly_id,scenario,expected,actual,match
+AN001,Unapproved quantity change,ANOMALY,ANOMALY,True
+AN002,Invalid purchase order line,ANOMALY,ANOMALY,True
+AN003,Promised date before order date,ANOMALY,ANOMALY,True
+AN004,Older acknowledgement revision,ANOMALY,ANOMALY,True
+AN005,Valid supplier acknowledgement,NORMAL,NORMAL,True
+AN006,Valid approved quantity change,NORMAL,NORMAL,True
